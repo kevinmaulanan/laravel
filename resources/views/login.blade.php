@@ -13,11 +13,21 @@
                     @csrf
                     <div class="header-login">
                         <h2>Login</h2>
+                        {{-- Message Error Login --}}
                         @if(session('message-error'))
                         <div class="alert alert-danger mb-0" style="text-align: center">
                             {{session('message-error')}}
                         </div>
                         @endif
+                        {{-- End Message Error Login --}}
+                        
+                        {{-- Message Success Register --}}
+                        @if(session('message-success'))
+                        <div class="alert alert-success mb-0" style="text-align: center">
+                            {{session('message-success')}}
+                        </div>
+                        @endif
+                        {{-- End Message Success Register --}}
                     </div>
 
                         <div class="container-form">

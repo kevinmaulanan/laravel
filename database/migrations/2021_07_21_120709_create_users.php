@@ -19,6 +19,7 @@ class CreateUsers extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('image_url');
+            $table->enum('role', ['admin_user', 'guest_user']);
             $table->timestamps();
         });
     }

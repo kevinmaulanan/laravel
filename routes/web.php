@@ -16,14 +16,15 @@ use App\Http\Controllers\Users;
 // *** Auth *** ///
 Route::middleware(['NonAuthenticated'])->group(function () {
     Route::get('/auth/login', [Users::class, 'login_view']);
-    Route::get('/register', [Users::class, 'register_view']);
+    Route::get('/auth/register', [Users::class, 'register_view']);
 
     Route::post('/auth/login', [Users::class, 'login_post']);
-    Route::post('/auth/register', [Users::class, 'register']);
+    Route::post('/auth/register', [Users::class, 'register_post']);
 });
 
 Route::middleware(['Authenticated'])->group(function () {
-    // Route::get('/admin/books/download/{id}', 'AdminController@download')->withoutMiddleware('Authenticated');
     Route::get('/home', [Users::class, 'home']);
+    Route::get('/user/{id}', [Users::class, 'user_detail']);
+    Route::get('/auth/logout', [Users::class, 'logout']);
 });
 

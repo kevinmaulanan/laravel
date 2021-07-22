@@ -9,7 +9,7 @@
     <body>
         <div class="d-flex align-items-center justify-content-center h-100">
             <div class="box-register ">
-                <form action="{{url('auth/register')}}" method="POST">
+                <form action="{{url('auth/register')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="header-register">
                         <h2>Register</h2>
@@ -42,8 +42,8 @@
                             {{-- End Form Password --}}
 
                              {{-- Form Name --}}
-                             <div class="form-group">
-                                <input style="height: 50px; margin-bottom:25px; border: 1px solid" type="text" class="form-control" name="name" @error('name') is-invalid @enderror" placeholder="Name">
+                             <div class="form-group" style="margin-bottom:25px;">
+                                <input type="text" class="form-control form-input-text @error('name') is-invalid @enderror" name="name" placeholder="Name">
 
                                 @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -51,15 +51,15 @@
                             </div>
                             {{-- End Form Name --}}
                             
-                            {{-- Form Name --}}
+                            {{-- Form Image --}}
                             <div class="form-group">
                                 <label>Masukkan Foto</label> <br>
-                                <input type="file" name="foto" accept="image/png, image/jpeg, image/jpg">
-                                @error('foto')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg">
+                                @error('image')
+                                <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            {{-- End Form Name --}}
+                            {{-- End Form Image --}}
                             <button type="submit" class="btn btn-primary w-100" style="height: 50px; margin-bottom:15px;">Register</button>
                             <p>You have a member? <a href="{{url('auth/login')}}">Login Now!</a></p>
                         </div>
